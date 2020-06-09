@@ -6,47 +6,19 @@ Window::Window():button1("Erase Field"),
                  q_button("Quit"),
                  m_label("Enter Text below:\t\t\t\t")
 {
-    //Set title of grid
-    set_title("Gtkmm Application");
-    add(p_box);
-
-    //Set border width
-    set_default_size(500, 200);
-    set_border_width(5);
-
-    //Add parent grid to parent box
-    p_box.pack_start(p_grid);
-    p_box.pack_start(box_text);
-   // p_box.pack_start(m_frame,Gtk::PACK_EXPAND_WIDGET);
-
-    //Add label to frame holder
-    m_frame.add(m_label);
-    m_frame.set_size_request(100,10);
-
+    init_architect();
+    left_grid_setup();
+    label_frame_setup();
 
     //Define signal response for buttons
     button1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked_erase_field));
     button2.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_fill_field));
     q_button.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked_quit));
 
-    //Set button sizes and how they respond inside the left grid
-    p_grid.set_valign(Gtk::ALIGN_CENTER);
-    p_grid.set_halign(Gtk::ALIGN_CENTER);
+    //Setup size requests for buttons
     button1.set_size_request(20,10);
     button2.set_size_request(20,10);
     q_button.set_size_request(20,10);
-
-
-    //Add boxes to left parent grid
-    p_grid.add(box_tr);
-    p_grid.attach_next_to(box_tl,box_tr,Gtk::POS_BOTTOM,1,1);
-    p_grid.attach_next_to(box_bl,box_tl,Gtk::POS_BOTTOM,1,1);
-
-
-    //Set left grid spacing parameters
-    p_grid.set_row_spacing(20);
-    p_grid.set_row_baseline_position(1,Gtk::BASELINE_POSITION_CENTER);
-
 
 
     //Add text field structural layout
@@ -79,6 +51,51 @@ Window::~Window()
 {
 }
 
+//This function will setup the container widgets necessary for construction of GUI
+void Window::init_architect()
+{
+    //Set title of grid
+    set_title("Gtkmm Application");
+
+    //Add parent box widget
+    add(p_box);
+
+    //Set default size of app & border width
+    set_default_size(500, 200);
+    set_border_width(5);
+
+    //Add left grid and text field container box to parent box
+    p_box.pack_start(p_grid);
+    p_box.pack_start(box_text);
+}
+
+void Window::left_grid_setup()
+{
+    //Set left grid behaviour
+    Window::p_grid.set_valign(Gtk::ALIGN_CENTER);
+    Window::p_grid.set_halign(Gtk::ALIGN_CENTER);
+
+
+
+    //Add boxes to left parent grid
+    Window::p_grid.add(box_tr);
+    Window::p_grid.attach_next_to(box_tl,box_tr,Gtk::POS_BOTTOM,1,1);
+    Window::p_grid.attach_next_to(box_bl,box_tl,Gtk::POS_BOTTOM,1,1);
+
+
+    //Set left grid spacing parameters
+    Window::p_grid.set_row_spacing(20);
+    Window::p_grid.set_row_baseline_position(1,Gtk::BASELINE_POSITION_CENTER);
+}
+
+void Window::label_frame_setup()
+{
+    //Add label to frame holder
+    m_frame.add(m_label);
+    m_frame.set_size_request(100,10);
+}
+
+
 void Window::on_button_clicked_erase_field()
 {
     m_refTextBuffer2 = Gtk::TextBuffer::create();
@@ -87,64 +104,17 @@ void Window::on_button_clicked_erase_field()
 
 }
 
-void Window::on_button_clicked2()
-{
-    std::cout << "Clicked 2!" << std::endl;
-}
-
 void Window::on_button_clicked_quit()
 {
-    std::cout << "The Program will now quit" << std::endl;
+    //std::cout << "The Program will now quit" << std::endl;
     hide();
-}
-
-void Window::fill_buffer()
-{
-    m_refTextBuffer1 = Gtk::TextBuffer::create();
-    m_refTextBuffer1->set_text("Name:\nDOB:");
 }
 
 void Window::on_button_fill_field()
 {
-    fill_buffer();
+    m_refTextBuffer1 = Gtk::TextBuffer::create();
+    m_refTextBuffer1->set_text("Name:\nDOB:");
     m_TextView.set_buffer(m_refTextBuffer1);
 }
 
 
-/*//Define Window member fxns
-void Window::create_button(void)
-{
-    Buttons f_button; //create object
-}*/
-
-/*
-//Define constructor with button
-Buttons::Buttons():m_button("Click to Enter")
-{
-    //Set border width of window
-    set_border_width(10);
-
-    //Instruct button object to call the on_button_clicked
-    //fxn below when it receives the clicked signal
-    m_button.signal_clicked().connect(sigc::mem_fun(*this,&Buttons::on_button_clicked));
-
-    //Pack button into a window
-    add(m_button);
-
-    //Display created widget
-    m_button.show();
-
-}
-
-//Define destructor
-Buttons::~Buttons()
-{
-}
-
-//define on_button_clicked action fxn
-void Buttons::on_button_clicked(void)
-{
-    std::cout << "Button Clicked! (Placeholder action for now)" << std::endl;
-}
-
-*/

@@ -51,22 +51,9 @@ protected:
     void on_button_clicked_quit();
 
     //Text editor member functions
-    void fill_buffer();
     void on_button_fill_field();
+    void init_architect();
+    void left_grid_setup();
+    void label_frame_setup();
 };
-
-/*class Buttons : public Gtk::Button //inherit from Gtk::Button
-{
-public:
-    Buttons(); //constructor
-    virtual ~Buttons(); //destructor
-    //Note: 'virtual' specified that the destructor can
-    //be overwridden in any derived classes
-protected:
-    //Signal handlers:
-    void on_button_clicked();
-
-    //Member widgets:
-    Gtk::Button m_button; //creates a button member widget
-};*/
 #endif // GTKMM_EXAMPLE_HELLOWORLD_H
