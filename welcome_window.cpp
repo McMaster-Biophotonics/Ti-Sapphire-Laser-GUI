@@ -4,7 +4,7 @@
 Window::Window():button1("Erase Field"),
                  button2("Fill Text Field"),
                  q_button("Quit"),
-                 m_label("Enter Text below:")
+                 m_label("Enter Text below:\t\t\t\t")
 {
     //Set title of grid
     set_title("Gtkmm Application");
@@ -21,6 +21,7 @@ Window::Window():button1("Erase Field"),
 
     //Add label to frame holder
     m_frame.add(m_label);
+    m_frame.set_size_request(100,10);
 
 
     //Define signal response for buttons
@@ -28,7 +29,7 @@ Window::Window():button1("Erase Field"),
     button2.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_fill_field));
     q_button.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked_quit));
 
-    //Set button sizes and how they respond inside the grid
+    //Set button sizes and how they respond inside the left grid
     p_grid.set_valign(Gtk::ALIGN_CENTER);
     p_grid.set_halign(Gtk::ALIGN_CENTER);
     button1.set_size_request(20,10);
@@ -36,14 +37,13 @@ Window::Window():button1("Erase Field"),
     q_button.set_size_request(20,10);
 
 
-    //Add boxes to parent grid
-    p_grid.add(box_tl);
-    p_grid.attach_next_to(box_tr,box_tl,Gtk::POS_BOTTOM,1,1);
-    p_grid.attach_next_to(box_bl,box_tr,Gtk::POS_BOTTOM,1,1);
-   // p_grid.add(box_tr);
-   //p_grid.add(box_bl);
+    //Add boxes to left parent grid
+    p_grid.add(box_tr);
+    p_grid.attach_next_to(box_tl,box_tr,Gtk::POS_BOTTOM,1,1);
+    p_grid.attach_next_to(box_bl,box_tl,Gtk::POS_BOTTOM,1,1);
 
-    //Set grid spacing parameters
+
+    //Set left grid spacing parameters
     p_grid.set_row_spacing(20);
     p_grid.set_row_baseline_position(1,Gtk::BASELINE_POSITION_CENTER);
 
@@ -54,9 +54,15 @@ Window::Window():button1("Erase Field"),
     //Add treeview inside scrolled window
     m_ScrolledWindow.add(m_TextView);
     m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+    m_ScrolledWindow.set_size_request(50,150);
+
+    //Add right grid and layout textfield and label & define grid behaviour
     box_text.add(box_text_grid);
     box_text_grid.add(m_ScrolledWindow);
     box_text_grid.attach_next_to(m_frame,m_ScrolledWindow,Gtk::POS_TOP);
+    box_text_grid.set_valign(Gtk::ALIGN_CENTER);
+    box_text_grid.set_halign(Gtk::ALIGN_CENTER);
+    box_text_grid.set_hexpand(true);
 
     //Add buttons to boxes
     box_tl.pack_start(button1);
