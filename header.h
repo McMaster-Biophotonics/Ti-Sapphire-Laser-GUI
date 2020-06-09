@@ -1,9 +1,12 @@
 #ifndef GTKMM_EXAMPLE_HELLOWORLD_H
 #define GTKMM_EXAMPLE_HELLOWORLD_H
 
-//This is just for prototyping, but when the app
-//is released, only include necessary headers for
-//decreased build time
+/**
+This is just for prototyping, but when the app
+is released, only include necessary headers for
+decreased build time
+**/
+
 #include <gtkmm-3.0/gtkmm.h>
 /*
 #include <gtkmm-3.0/gtkmm/window.h>
@@ -18,9 +21,9 @@
 class Window: public Gtk::Window
 {
 public:
-    Window();
-    virtual ~Window();
-    //void create_button();
+    Window(); //Constructor
+    virtual ~Window(); //Destructor
+
 protected:
     //Structural elements
     Gtk::Box p_box; //parent box for all
@@ -54,6 +57,8 @@ protected:
     void on_button_fill_field();
     void init_architect();
     void left_grid_setup();
+    void right_grid_setup();
     void label_frame_setup();
+    void button_setup();
 };
 #endif // GTKMM_EXAMPLE_HELLOWORLD_H

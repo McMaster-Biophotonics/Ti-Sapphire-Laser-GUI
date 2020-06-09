@@ -7,8 +7,6 @@ int main(int argc, char *argv[])
 
     //create window object
     Window window;
-    //Machining_GUI GUI_obj;
-
 
     //Begin event loop process
     return app->run(window);
