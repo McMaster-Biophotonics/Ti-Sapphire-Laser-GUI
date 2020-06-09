@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to the Laser MicroMachining Control System Project
 
 You can use the [editor on GitHub](https://github.com/liamward14/Laser-Micromachining-GUI/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
