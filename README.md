@@ -1,6 +1,6 @@
 ## Welcome to the Laser MicroMachining Control System Project
 
-You can use the [editor on GitHub](https://github.com/liamward14/Laser-Micromachining-GUI/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This project is completely described on the [McMaster Biophotonics Research Group Wiki](
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
