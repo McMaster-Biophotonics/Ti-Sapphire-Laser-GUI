@@ -5,6 +5,6 @@ This project is completely described on the [McMaster Biophotonics Research Grou
 ### Project Overview
 
 
-# Header 1
+# Dependecies
 
 
