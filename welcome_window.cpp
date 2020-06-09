@@ -1,32 +1,67 @@
 #include "header.h"
 
 //Define window constructor
-Window::Window():button1("Home Command"),button2("Button 2"),q_button("Press to Quit")
+Window::Window():button1("Erase Field"),
+                 button2("Fill Text Field"),
+                 q_button("Quit"),
+                 m_label("Enter Text below:")
 {
     //Set title of grid
-    set_title("Gtk::Grid");
+    set_title("Gtkmm Application");
+    add(p_box);
 
     //Set border width
-    set_border_width(12);
+    set_default_size(500, 200);
+    set_border_width(5);
 
-    //Add parent frame to window
-    add(p_grid);
+    //Add parent grid to parent box
+    p_box.pack_start(p_grid);
+    p_box.pack_start(box_text);
+   // p_box.pack_start(m_frame,Gtk::PACK_EXPAND_WIDGET);
+
+    //Add label to frame holder
+    m_frame.add(m_label);
+
 
     //Define signal response for buttons
-    button1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked1));
-    button2.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked2));
+    button1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked_erase_field));
+    button2.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_fill_field));
     q_button.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_button_clicked_quit));
 
-    //Add boxes to parent grid
-    p_grid.add(box1);
-    p_grid.add(box2);
-    p_grid.attach_next_to(box3,box1,Gtk::POS_BOTTOM,2,1);
+    //Set button sizes and how they respond inside the grid
+    p_grid.set_valign(Gtk::ALIGN_CENTER);
+    p_grid.set_halign(Gtk::ALIGN_CENTER);
+    button1.set_size_request(20,10);
+    button2.set_size_request(20,10);
+    q_button.set_size_request(20,10);
 
+
+    //Add boxes to parent grid
+    p_grid.add(box_tl);
+    p_grid.attach_next_to(box_tr,box_tl,Gtk::POS_BOTTOM,1,1);
+    p_grid.attach_next_to(box_bl,box_tr,Gtk::POS_BOTTOM,1,1);
+   // p_grid.add(box_tr);
+   //p_grid.add(box_bl);
+
+    //Set grid spacing parameters
+    p_grid.set_row_spacing(20);
+    p_grid.set_row_baseline_position(1,Gtk::BASELINE_POSITION_CENTER);
+
+
+
+    //Add text field structural layout
+
+    //Add treeview inside scrolled window
+    m_ScrolledWindow.add(m_TextView);
+    m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+    box_text.add(box_text_grid);
+    box_text_grid.add(m_ScrolledWindow);
+    box_text_grid.attach_next_to(m_frame,m_ScrolledWindow,Gtk::POS_TOP);
 
     //Add buttons to boxes
-    box1.pack_start(button1);
-    box2.pack_start(button2);
-    box3.pack_start(q_button);
+    box_tl.pack_start(button1);
+    box_tr.pack_start(button2);
+    box_bl.pack_start(q_button);
 
     show_all_children();
 
@@ -38,9 +73,12 @@ Window::~Window()
 {
 }
 
-void Window::on_button_clicked1()
+void Window::on_button_clicked_erase_field()
 {
-    std::cout << "Clicked 1!" << std::endl;
+    m_refTextBuffer2 = Gtk::TextBuffer::create();
+    m_refTextBuffer2->set_text("");
+    m_TextView.set_buffer(m_refTextBuffer2);
+
 }
 
 void Window::on_button_clicked2()
@@ -52,6 +90,18 @@ void Window::on_button_clicked_quit()
 {
     std::cout << "The Program will now quit" << std::endl;
     hide();
+}
+
+void Window::fill_buffer()
+{
+    m_refTextBuffer1 = Gtk::TextBuffer::create();
+    m_refTextBuffer1->set_text("Name:\nDOB:");
+}
+
+void Window::on_button_fill_field()
+{
+    fill_buffer();
+    m_TextView.set_buffer(m_refTextBuffer1);
 }
 
 
