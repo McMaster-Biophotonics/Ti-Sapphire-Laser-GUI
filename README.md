@@ -8,6 +8,6 @@ This project is completely described on the [McMaster Biophotonics Research Grou
 # Dependecies
 
 # Diagrams
-![Control system](Laser-Micromachining-Diagram.png)
+![Control System](file:///C:/Users/liamw/OneDrive/McMasterUniversity/2019-2020%20School%20Year/_Research/MotorizedMachiningProject/Diagrams/Laser-MicroMachining-Diagram.html)
 
 
