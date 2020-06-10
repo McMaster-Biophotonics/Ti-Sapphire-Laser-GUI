@@ -1,6 +1,24 @@
 #include "header.h"
 
 //Define window constructor
+Window::Window() //initializers for buttons, etc will go here
+{
+    //define architechture function to build background setup
+}
+
+//Destructor:
+void Window::~Window()
+{
+}
+
+void Window::build_architechture()
+{
+    //Add parent box to window
+    add(p_box);
+}
+//Old code:
+/*
+//Define window constructor
 Window::Window():button1("Erase Field"),
                  button2("Fill Text Field"),
                  q_button("Quit"),
@@ -21,7 +39,7 @@ Window::~Window()
 {
     //Nothing to define here
 }
-
+*/
 /**
 These are the setup functions, used for things like connecting button
 signals to slot functions, and setting up general architechture. I chose
@@ -30,6 +48,8 @@ windows and more user-friendly for people who want to adapt this code
 later.
 **/
 
+//Old code:
+/*
 //This function will setup the container widgets necessary for construction of GUI
 void Window::init_architect()
 {
@@ -111,12 +131,15 @@ void Window::button_setup()
 
 }
 
+*/
 /**
 These are slot functions that are linked to button signals.
 That basically just means that when a button is 'clicked' for
 example, the specified function will be called.
 **/
 
+//Old code:
+/*
 //This function clears the text field, even after entering text
 void Window::on_button_clicked_erase_field()
 {
@@ -139,5 +162,6 @@ void Window::on_button_fill_field()
     m_refTextBuffer1->set_text("Name:\nDOB:");
     m_TextView.set_buffer(m_refTextBuffer1);
 }
+*/
 
 
