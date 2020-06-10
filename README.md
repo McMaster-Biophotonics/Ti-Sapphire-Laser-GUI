@@ -8,6 +8,6 @@ This project is completely described on the [McMaster Biophotonics Research Grou
 # Dependecies
 
 # Diagrams
-![Control system](master)
+![Control system](liamward14/Laser-Micromachining-GUI/)
 
 
