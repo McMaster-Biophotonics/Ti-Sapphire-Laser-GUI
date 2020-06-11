@@ -44,6 +44,7 @@ public:
     virtual ~Window(); //Destructor
 
 protected:
+    ///build_architechture members
     //Parent box member (Level 0)
     Gtk::Grid p_grid;
 
@@ -74,10 +75,26 @@ protected:
     Gtk::Box b_3_2_1;
     Gtk::Box b_3_3_1;
 
-    //Member functions
+    ///stage_position_setup members
+    //Level 3 grid (for 'Stage Position' Container)
+    Gtk::Grid p_grid_3;
+
+    //Row 1
+    Gtk::Label lab_4_1_1;
+    Gtk::Entry ent_4_1_1;
+    Gtk::Entry ent_4_1_2;
+    Gtk::Entry ent_4_1_3;
+    Gtk::Button but_4_1_1;
+
+    //Stage Position Container members
+
+
+    ///Member functions
     void build_architechture();
+    void stage_position_setup();
     void button_response();
     void on_qbutton_clicked();
+    void on_setOrigion_button_clicked();
 
     //Old code:
     /*

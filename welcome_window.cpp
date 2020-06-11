@@ -1,6 +1,6 @@
 #include "header.h"
 
-//Define window constructor
+///Define window constructor
 Window::Window() //initializers for buttons, etc will go here
 {
     build_architechture();
@@ -9,12 +9,12 @@ Window::Window() //initializers for buttons, etc will go here
     //define architechture function to build background setup
 }
 
-//Destructor:
+///Destructor:
 Window::~Window()
 {
 }
 
-//Function to build the window
+///Function to build the window
 void Window::build_architechture()
 {
     //Add parent grid to window and format grid
@@ -28,17 +28,15 @@ void Window::build_architechture()
     p_grid.attach(f_1_1,0,0);
     p_grid.attach(f_1_2,0,1);
     p_grid.attach(g_1_1,0,3,3,1);
-    f_1_1.set_label("Frame 1_1");
-    f_1_2.set_label("Frame 1_2");
+    f_1_1.set_label("Stage Position");
+    f_1_2.set_label("Laser Control");
 
     //Add level 1 box (holding quit button) and frame
     p_grid.attach(f_1_3,1,1,1,2);
     p_grid.attach(b_1_1,1,0,1,1);
-    f_1_3.set_label("Frame f_1_3");
-    b_1_1.add(but_2_1_1);
+    b_1_1.pack_end(but_2_1_1,false,false,10);
+    f_1_3.set_label("Predefined Functions");
     but_2_1_1.set_label("QUIT");
-
-
 
     //Add level 2 frames to bottom grid
     g_1_1.add(f_2_1_1);
@@ -46,9 +44,9 @@ void Window::build_architechture()
     g_1_1.attach_next_to(f_2_1_3,f_2_1_2,Gtk::POS_RIGHT);
 
     //Label level 2 frames
-    f_2_1_1.set_label("Frame 2_1_1");
-    f_2_1_2.set_label("Frame 2_1_2");
-    f_2_1_3.set_label("Frame 2_1_3");
+    f_2_1_1.set_label("X Axis");
+    f_2_1_2.set_label("Y Axis");
+    f_2_1_3.set_label("Z Axis");
 
     //Set expansion behaviours for level 1 and 2 frames
     f_1_3.set_hexpand(true);
@@ -58,14 +56,54 @@ void Window::build_architechture()
     f_2_1_2.set_hexpand(true);
     f_2_1_3.set_hexpand(true);
 
+    //Add level 2 and level 3 boxes to frame parents
+    f_1_1.add(b_2_1_1);
+    f_1_2.add(b_2_2_1);
+    f_2_1_1.add(b_3_1_1);
+    f_2_1_2.add(b_3_2_1);
+    f_2_1_3.add(b_3_3_1);
+
+    //Call individual box setup functions
+    stage_position_setup();
+
     //Call button response fxn to setup signal connects
     button_response();
 }
 
-//Function to define button signal reponses
+/// Function to setup the 'Stage Position' Box
+void Window::stage_position_setup()
+{
+    //Add grid to box container parent
+    b_2_1_1.add(p_grid_3);
+
+    //Populate with rows and columns (5x5 grid)
+    for (int j=0;j<5;j++)
+    {
+        p_grid_3.insert_row(j);
+        p_grid_3.insert_column(j);
+    }
+    //Remember, position syntax for 'attach' is: (column,row)
+    p_grid_3.attach(lab_4_1_1,0,0);
+    p_grid_3.attach(ent_4_1_1,1,0);
+    p_grid_3.attach(ent_4_1_2,2,0);
+    p_grid_3.attach(ent_4_1_3,3,0);
+    p_grid_3.attach(but_4_1_1,4,0);
+
+    //Labels and default text for row 0
+    lab_4_1_1.set_label("Absolute Position");
+    but_4_1_1.add_label("Set Origin");
+    ent_4_1_1.get_buffer()->set_text("0");
+    ent_4_1_2.get_buffer()->set_text("0");
+    ent_4_1_3.get_buffer()->set_text("0");
+
+
+}
+
+///Function to define button signal reponses
 void Window::button_response()
 {
     but_2_1_1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_qbutton_clicked));
+    but_4_1_1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_setOrigion_button_clicked));
 
 }
 
@@ -73,10 +111,19 @@ void Window::button_response()
 This set of functions define individual button clicks and their actions
 **/
 
-//This function contains the response for the quit button
+///This function contains the response for the quit button
 void Window::on_qbutton_clicked()
 {
     hide();
+}
+
+///This function contains the response for the 'Set origin' button
+void Window::on_setOrigion_button_clicked()
+{
+    //Will actually need to send command later, just changes text entry for now
+    ent_4_1_1.get_buffer()->set_text("0");
+    ent_4_1_2.get_buffer()->set_text("0");
+    ent_4_1_3.get_buffer()->set_text("0");
 }
 
 
