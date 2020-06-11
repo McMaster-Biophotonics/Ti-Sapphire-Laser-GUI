@@ -86,6 +86,18 @@ protected:
     Gtk::Entry ent_4_1_3;
     Gtk::Button but_4_1_1;
 
+    //Row 2
+    Gtk::Label lab_4_1_2;
+    Gtk::Entry ent_4_1_4;
+    Gtk::Entry ent_4_1_5;
+    Gtk::Entry ent_4_1_6;
+
+    //Row 3
+    Gtk::Button but_4_1_2;
+    Gtk::Entry ent_4_1_7;
+    Gtk::Entry ent_4_1_8;
+    Gtk::Entry ent_4_1_9;
+
     //Stage Position Container members
 
 

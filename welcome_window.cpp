@@ -82,19 +82,61 @@ void Window::stage_position_setup()
         p_grid_3.insert_row(j);
         p_grid_3.insert_column(j);
     }
+    //Style options:
+    //Create colour and font object for text
+    Gdk::RGBA colour = Gdk::RGBA(Glib::ustring("rgb(19,206,13)"));
+    Pango::FontDescription f = Pango::FontDescription(Glib::ustring("Sans Bold 13"));
+
     //Remember, position syntax for 'attach' is: (column,row)
+    //Row 0:
     p_grid_3.attach(lab_4_1_1,0,0);
     p_grid_3.attach(ent_4_1_1,1,0);
     p_grid_3.attach(ent_4_1_2,2,0);
     p_grid_3.attach(ent_4_1_3,3,0);
     p_grid_3.attach(but_4_1_1,4,0);
 
-    //Labels and default text for row 0
+    //Labels and default text
     lab_4_1_1.set_label("Absolute Position");
     but_4_1_1.add_label("Set Origin");
-    ent_4_1_1.get_buffer()->set_text("0");
-    ent_4_1_2.get_buffer()->set_text("0");
-    ent_4_1_3.get_buffer()->set_text("0");
+    Glib::ustring ent_4_1_1_text = "0";
+    Glib::ustring ent_4_1_2_text = "0";
+    Glib::ustring ent_4_1_3_text = "0";
+
+    //style options
+    ent_4_1_1.override_font(f);
+    ent_4_1_2.override_font(f);
+    ent_4_1_3.override_font(f);
+
+    ent_4_1_1.get_buffer()->set_text(ent_4_1_1_text);
+    ent_4_1_2.get_buffer()->set_text(ent_4_1_2_text);
+    ent_4_1_3.get_buffer()->set_text(ent_4_1_3_text);
+
+    //Row 1:
+    p_grid_3.attach(lab_4_1_2,0,1);
+    p_grid_3.attach(ent_4_1_4,1,1);
+    p_grid_3.attach(ent_4_1_5,2,1);
+    p_grid_3.attach(ent_4_1_6,3,1);
+
+    //Labels and default text
+    lab_4_1_2.set_label("Relative Position");
+    Glib::ustring ent_4_1_4_text = "0";
+    Glib::ustring ent_4_1_5_text = "0";
+    Glib::ustring ent_4_1_6_text = "0";
+
+    //style options
+    ent_4_1_4.override_color(colour,Gtk::STATE_FLAG_NORMAL);
+    ent_4_1_5.override_color(colour,Gtk::STATE_FLAG_NORMAL);
+    ent_4_1_6.override_color(colour,Gtk::STATE_FLAG_NORMAL);
+    ent_4_1_4.override_font(f);
+    ent_4_1_5.override_font(f);
+    ent_4_1_6.override_font(f);
+    ent_4_1_4.get_buffer()->set_text(ent_4_1_4_text);
+    ent_4_1_5.get_buffer()->set_text(ent_4_1_5_text);
+    ent_4_1_6.get_buffer()->set_text(ent_4_1_6_text);
+
+    //Testing color change:
+    //Glib::RefPtr<Gtk::EntryBuffer> ent_4_1_5_buffer = ent_4_1_5.get_buffer();
+    //ent_4_1_5_buffer.
 
 
 }
@@ -124,6 +166,9 @@ void Window::on_setOrigion_button_clicked()
     ent_4_1_1.get_buffer()->set_text("0");
     ent_4_1_2.get_buffer()->set_text("0");
     ent_4_1_3.get_buffer()->set_text("0");
+    ent_4_1_4.get_buffer()->set_text("0");
+    ent_4_1_5.get_buffer()->set_text("0");
+    ent_4_1_6.get_buffer()->set_text("0");
 }
 
 
