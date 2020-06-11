@@ -50,56 +50,49 @@ protected:
 
     //Level 1 Child Grids and box holding quit command
     Gtk::Box b_1_1;
-    Gtk::Grid g_1_1;
-    Gtk::Grid g_1_2;
+    Gtk::Grid g_1_1,g_1_2;
 
     //Level 1 Children Frames (to be placed inside parent grid)
-    Gtk::Frame f_1_1;
-    Gtk::Frame f_1_2;
-    Gtk::Frame f_1_3;
+    Gtk::Frame f_1_1,f_1_2,f_1_3;
 
     //Level 2 Boxes
-    Gtk::Box b_2_1_1;
-    Gtk::Box b_2_2_1;
+    Gtk::Box b_2_1_1,b_2_2_1;
 
     //Level 2 Frames (to be placed inside g_1_1 child grid)
-    Gtk::Frame f_2_1_1;
-    Gtk::Frame f_2_1_2;
-    Gtk::Frame f_2_1_3;
+    Gtk::Frame f_2_1_1,f_2_1_2,f_2_1_3;
 
     //Level 2 button holding quit command
     Gtk::Button but_2_1_1;
 
     //Level 3 boxes (to be placed in level 2 frames)
-    Gtk::Box b_3_1_1;
-    Gtk::Box b_3_2_1;
-    Gtk::Box b_3_3_1;
+    Gtk::Box b_3_1_1,b_3_2_1,b_3_3_1;
 
     ///stage_position_setup members
     //Level 3 grid (for 'Stage Position' Container)
     Gtk::Grid p_grid_3;
 
-    //Row 1
+    //Row 0
     Gtk::Label lab_4_1_1;
-    Gtk::Entry ent_4_1_1;
-    Gtk::Entry ent_4_1_2;
-    Gtk::Entry ent_4_1_3;
+    Gtk::Entry ent_4_1_1,ent_4_1_2,ent_4_1_3;
     Gtk::Button but_4_1_1;
 
-    //Row 2
+    //Row 1
     Gtk::Label lab_4_1_2;
-    Gtk::Entry ent_4_1_4;
-    Gtk::Entry ent_4_1_5;
-    Gtk::Entry ent_4_1_6;
+    Gtk::Entry ent_4_1_4,ent_4_1_5,ent_4_1_6;
+
+    //Row 2
+    Gtk::Button but_4_1_2;
+    Gtk::Entry ent_4_1_7,ent_4_1_8,ent_4_1_9;
 
     //Row 3
-    Gtk::Button but_4_1_2;
-    Gtk::Entry ent_4_1_7;
-    Gtk::Entry ent_4_1_8;
-    Gtk::Entry ent_4_1_9;
-
-    //Stage Position Container members
-
+    Gtk::Label lab_4_1_3;
+    Gtk::Box b_4_1_1,b_4_1_2,b_4_1_3;
+    Gtk::Button but_5_1_1,but_5_1_2,but_5_2_1,but_5_2_2,but_5_3_1;
+    /*
+    Gtk::Label lab_4_1_3,lab_ph_1,lab_ph_2; //contains placeholder labels
+    Gtk::Grid g_4_1_1;
+    Gtk::Button b_5_1_1,b_5_1_2,b_5_1_3,b_5_1_4,b_5_1_5;
+    */
 
     ///Member functions
     void build_architechture();
@@ -107,6 +100,7 @@ protected:
     void button_response();
     void on_qbutton_clicked();
     void on_setOrigion_button_clicked();
+    void on_goTo_button_clicked();
 
     //Old code:
     /*

@@ -88,7 +88,7 @@ void Window::stage_position_setup()
     Pango::FontDescription f = Pango::FontDescription(Glib::ustring("Sans Bold 13"));
 
     //Remember, position syntax for 'attach' is: (column,row)
-    //Row 0:
+    ///Row 0:
     p_grid_3.attach(lab_4_1_1,0,0);
     p_grid_3.attach(ent_4_1_1,1,0);
     p_grid_3.attach(ent_4_1_2,2,0);
@@ -98,7 +98,7 @@ void Window::stage_position_setup()
     //Labels and default text
     lab_4_1_1.set_label("Absolute Position");
     but_4_1_1.add_label("Set Origin");
-    Glib::ustring ent_4_1_1_text = "0";
+    static Glib::ustring ent_4_1_1_text = "0";
     Glib::ustring ent_4_1_2_text = "0";
     Glib::ustring ent_4_1_3_text = "0";
 
@@ -111,7 +111,7 @@ void Window::stage_position_setup()
     ent_4_1_2.get_buffer()->set_text(ent_4_1_2_text);
     ent_4_1_3.get_buffer()->set_text(ent_4_1_3_text);
 
-    //Row 1:
+    ///Row 1:
     p_grid_3.attach(lab_4_1_2,0,1);
     p_grid_3.attach(ent_4_1_4,1,1);
     p_grid_3.attach(ent_4_1_5,2,1);
@@ -134,9 +134,72 @@ void Window::stage_position_setup()
     ent_4_1_5.get_buffer()->set_text(ent_4_1_5_text);
     ent_4_1_6.get_buffer()->set_text(ent_4_1_6_text);
 
-    //Testing color change:
-    //Glib::RefPtr<Gtk::EntryBuffer> ent_4_1_5_buffer = ent_4_1_5.get_buffer();
-    //ent_4_1_5_buffer.
+    ///Row 2
+    p_grid_3.attach(but_4_1_2,0,2);
+    p_grid_3.attach(ent_4_1_7,1,2);
+    p_grid_3.attach(ent_4_1_8,2,2);
+    p_grid_3.attach(ent_4_1_9,3,2);
+
+    //Labels and default text
+    //initialize as ustring bc of ability to change
+    Glib::ustring ent_4_1_7_text = "0";
+    Glib::ustring ent_4_1_8_text = "0";
+    Glib::ustring ent_4_1_9_text = "0";
+    ent_4_1_7.override_font(f);
+    ent_4_1_8.override_font(f);
+    ent_4_1_9.override_font(f);
+    ent_4_1_7.get_buffer()->set_text(ent_4_1_7_text);
+    ent_4_1_8.get_buffer()->set_text(ent_4_1_8_text);
+    ent_4_1_9.get_buffer()->set_text(ent_4_1_9_text);
+    but_4_1_2.set_label("Go to Position");
+
+    ///Row 3
+    p_grid_3.attach(lab_4_1_3,0,3);
+    p_grid_3.attach(b_4_1_1,1,3);
+    p_grid_3.attach(b_4_1_2,2,3);
+    p_grid_3.attach(b_4_1_3,4,3);
+    b_4_1_1.pack_start(but_5_1_1,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_1.pack_end(but_5_1_2,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_2.pack_start(but_5_2_1,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_2.pack_start(but_5_2_2,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_3.pack_start(but_5_3_1,Gtk::PACK_EXPAND_WIDGET);
+
+    //Labels & Styling
+    lab_4_1_3.set_label("Save Position");
+    but_5_1_1.set_label("M1+");
+    but_5_1_2.set_label("M2+");
+    but_5_2_1.set_label("M3+");
+    but_5_2_2.set_label("M4+");
+    but_5_3_1.set_label("Joystick Off");
+
+    ///Row 4
+
+    /*
+    p_grid_3.attach(lab_4_1_3,0,3);
+    p_grid_3.attach(g_4_1_1,1,3,4,1);
+
+    //Setup up g_4_1_1 as (1x8) grid (indexing starting at 1)
+    g_4_1_1.insert_row(1);
+    for(int j=0;j<8;j++){g_4_1_1.insert_column(j+1);}
+    g_4_1_1.attach(b_5_1_1,1,1);
+    g_4_1_1.attach(b_5_1_2,2,1);
+    g_4_1_1.attach(b_5_1_3,3,1);
+    g_4_1_1.attach(b_5_1_4,4,1);
+    g_4_1_1.attach(lab_ph_1,5,1);
+    g_4_1_1.attach(lab_ph_2,6,1);
+    g_4_1_1.attach(b_5_1_5,7,1,2,1);
+
+    //Labels & styling
+    lab_4_1_3.set_label("Save Position");
+    b_5_1_5.set_label("Joystick Off");
+    g_4_1_1.set_column_spacing(50);
+    lab_ph_1.set_label("\t\t");
+    lab_ph_2.set_label("\t\t");
+    b_5_1_1.set_label("M1+");
+    b_5_1_2.set_label("M2+");
+    b_5_1_3.set_label("M3+");
+    b_5_1_4.set_label("M4+");
+    */
 
 
 }
@@ -146,6 +209,7 @@ void Window::button_response()
 {
     but_2_1_1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_qbutton_clicked));
     but_4_1_1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_setOrigion_button_clicked));
+    but_4_1_2.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_goTo_button_clicked));
 
 }
 
@@ -169,6 +233,17 @@ void Window::on_setOrigion_button_clicked()
     ent_4_1_4.get_buffer()->set_text("0");
     ent_4_1_5.get_buffer()->set_text("0");
     ent_4_1_6.get_buffer()->set_text("0");
+}
+
+/**
+This function will set the text values of the first row
+of text entries to the third row to demonstrate the use
+of the 'Go to Position' button
+**/
+
+void Window::on_goTo_button_clicked()
+{
+    std::cout << "Go to button clicked" << std::endl;
 }
 
 
