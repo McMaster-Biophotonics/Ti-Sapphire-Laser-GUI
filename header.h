@@ -45,31 +45,39 @@ public:
 
 protected:
     //Parent box member (Level 0)
-    Gtk::Box p_box;
+    Gtk::Grid p_grid;
 
-    //Level 1 Children Frames
+    //Level 1 Child Grids and box holding quit command
+    Gtk::Box b_1_1;
+    Gtk::Grid g_1_1;
+    Gtk::Grid g_1_2;
+
+    //Level 1 Children Frames (to be placed inside parent grid)
     Gtk::Frame f_1_1;
     Gtk::Frame f_1_2;
     Gtk::Frame f_1_3;
 
-    //Level 1 Child Grid and label
-    Gtk::Label lab_1_1;
-    Gtk::Grid g_1_1;
-
     //Level 2 Boxes
     Gtk::Box b_2_1_1;
     Gtk::Box b_2_2_1;
-    Gtk:Box b_2_3_1;
 
-    //Level 3 Frames (to be placed inside g_1_1)
-    Gtk::Frame f_3_1_1;
-    Gtk::Frame f_3_1_2;
-    Gtk::Frame f_3_1_3;
+    //Level 2 Frames (to be placed inside g_1_1 child grid)
+    Gtk::Frame f_2_1_1;
+    Gtk::Frame f_2_1_2;
+    Gtk::Frame f_2_1_3;
 
-    //Level 4 boxes (to be placed in level 3 frames)
-    Gtk::Box b_4_1_1;
-    Gtk::Box b_4_2_1;
-    Gtk::Box b_4_3_1;
+    //Level 2 button holding quit command
+    Gtk::Button but_2_1_1;
+
+    //Level 3 boxes (to be placed in level 2 frames)
+    Gtk::Box b_3_1_1;
+    Gtk::Box b_3_2_1;
+    Gtk::Box b_3_3_1;
+
+    //Member functions
+    void build_architechture();
+    void button_response();
+    void on_qbutton_clicked();
 
     //Old code:
     /*

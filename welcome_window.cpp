@@ -3,19 +3,83 @@
 //Define window constructor
 Window::Window() //initializers for buttons, etc will go here
 {
+    build_architechture();
+
+    show_all_children();
     //define architechture function to build background setup
 }
 
 //Destructor:
-void Window::~Window()
+Window::~Window()
 {
 }
 
+//Function to build the window
 void Window::build_architechture()
 {
-    //Add parent box to window
-    add(p_box);
+    //Add parent grid to window and format grid
+    add(p_grid);
+    p_grid.insert_row(0);
+    p_grid.insert_row(1);
+    p_grid.insert_row(2);
+    p_grid.insert_row(3);
+    p_grid.insert_column(0);
+    p_grid.insert_column(1);
+    p_grid.attach(f_1_1,0,0);
+    p_grid.attach(f_1_2,0,1);
+    p_grid.attach(g_1_1,0,3,3,1);
+    f_1_1.set_label("Frame 1_1");
+    f_1_2.set_label("Frame 1_2");
+
+    //Add level 1 box (holding quit button) and frame
+    p_grid.attach(f_1_3,1,1,1,2);
+    p_grid.attach(b_1_1,1,0,1,1);
+    f_1_3.set_label("Frame f_1_3");
+    b_1_1.add(but_2_1_1);
+    but_2_1_1.set_label("QUIT");
+
+
+
+    //Add level 2 frames to bottom grid
+    g_1_1.add(f_2_1_1);
+    g_1_1.attach_next_to(f_2_1_2,f_2_1_1,Gtk::POS_RIGHT);
+    g_1_1.attach_next_to(f_2_1_3,f_2_1_2,Gtk::POS_RIGHT);
+
+    //Label level 2 frames
+    f_2_1_1.set_label("Frame 2_1_1");
+    f_2_1_2.set_label("Frame 2_1_2");
+    f_2_1_3.set_label("Frame 2_1_3");
+
+    //Set expansion behaviours for level 1 and 2 frames
+    f_1_3.set_hexpand(true);
+    f_1_1.set_hexpand(true);
+    f_1_2.set_hexpand(true);
+    f_2_1_1.set_hexpand(true);
+    f_2_1_2.set_hexpand(true);
+    f_2_1_3.set_hexpand(true);
+
+    //Call button response fxn to setup signal connects
+    button_response();
 }
+
+//Function to define button signal reponses
+void Window::button_response()
+{
+    but_2_1_1.signal_clicked().connect(sigc::mem_fun(*this,&Window::on_qbutton_clicked));
+
+}
+
+/**
+This set of functions define individual button clicks and their actions
+**/
+
+//This function contains the response for the quit button
+void Window::on_qbutton_clicked()
+{
+    hide();
+}
+
+
 //Old code:
 /*
 //Define window constructor
