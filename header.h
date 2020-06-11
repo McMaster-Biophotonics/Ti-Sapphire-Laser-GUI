@@ -88,6 +88,13 @@ protected:
     Gtk::Label lab_4_1_3;
     Gtk::Box b_4_1_1,b_4_1_2,b_4_1_3;
     Gtk::Button but_5_1_1,but_5_1_2,but_5_2_1,but_5_2_2,but_5_3_1;
+
+    //Row 4
+    Gtk::Label lab_4_1_4;
+    Gtk::Box b_4_1_4,b_4_1_5;
+    Gtk::Button but_5_4_1,but_5_4_2,but_5_5_1,but_5_5_2,but_4_1_3;
+
+
     /*
     Gtk::Label lab_4_1_3,lab_ph_1,lab_ph_2; //contains placeholder labels
     Gtk::Grid g_4_1_1;

@@ -173,6 +173,10 @@ void Window::stage_position_setup()
     but_5_3_1.set_label("Joystick Off");
 
     ///Row 4
+    p_grid_3.attach(lab_4_1_4,0,4);
+
+    //Labels & Styling
+    lab_4_1_4.set_label("Recall Location");
 
     /*
     p_grid_3.attach(lab_4_1_3,0,3);
