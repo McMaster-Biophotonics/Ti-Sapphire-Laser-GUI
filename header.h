@@ -94,16 +94,19 @@ protected:
     Gtk::Box b_4_1_4,b_4_1_5;
     Gtk::Button but_5_4_1,but_5_4_2,but_5_5_1,but_5_5_2,but_4_1_3;
 
+    ///laser_control setup members
+    Gtk::Grid p_grid_3_2;
+    Gtk::Label lab_4_2_1,lab_4_2_2,lab_4_2_3,lab_4_2_4,lab_4_2_5,lab_4_2_6,lab_4_2_7;
+    Gtk::Entry ent_4_2_1,ent_4_2_2;
+    Gtk::Button but_4_2_1,but_4_2_2,but_4_2_3,but_4_2_4,but_4_2_5,but_4_2_6,but_4_2_7;
+    Gtk::SpinButton spb_4_2_1,spb_4_2_2,spb_4_2_3,spb_4_2_4,spb_4_2_5,spb_4_2_6;
 
-    /*
-    Gtk::Label lab_4_1_3,lab_ph_1,lab_ph_2; //contains placeholder labels
-    Gtk::Grid g_4_1_1;
-    Gtk::Button b_5_1_1,b_5_1_2,b_5_1_3,b_5_1_4,b_5_1_5;
-    */
+
 
     ///Member functions
     void build_architechture();
     void stage_position_setup();
+    void laser_control_setup();
     void button_response();
     void on_qbutton_clicked();
     void on_setOrigion_button_clicked();

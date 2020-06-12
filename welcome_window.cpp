@@ -65,6 +65,7 @@ void Window::build_architechture()
 
     //Call individual box setup functions
     stage_position_setup();
+    laser_control_setup();
 
     //Call button response fxn to setup signal connects
     button_response();
@@ -157,7 +158,7 @@ void Window::stage_position_setup()
     p_grid_3.attach(lab_4_1_3,0,3);
     p_grid_3.attach(b_4_1_1,1,3);
     p_grid_3.attach(b_4_1_2,2,3);
-    p_grid_3.attach(b_4_1_3,4,3);
+    p_grid_3.attach(b_4_1_3,4,3,1,2);
     b_4_1_1.pack_start(but_5_1_1,Gtk::PACK_EXPAND_WIDGET);
     b_4_1_1.pack_end(but_5_1_2,Gtk::PACK_EXPAND_WIDGET);
     b_4_1_2.pack_start(but_5_2_1,Gtk::PACK_EXPAND_WIDGET);
@@ -174,36 +175,79 @@ void Window::stage_position_setup()
 
     ///Row 4
     p_grid_3.attach(lab_4_1_4,0,4);
+    p_grid_3.attach(b_4_1_4,1,4);
+    p_grid_3.attach(b_4_1_5,2,4);
+    p_grid_3.attach(but_4_1_3,3,4);
+    b_4_1_4.pack_start(but_5_4_1,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_4.pack_end(but_5_4_2,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_5.pack_start(but_5_5_1,Gtk::PACK_EXPAND_WIDGET);
+    b_4_1_5.pack_end(but_5_5_2,Gtk::PACK_EXPAND_WIDGET);
 
     //Labels & Styling
     lab_4_1_4.set_label("Recall Location");
+    but_4_1_3.set_label("Relative Origin");
+    but_5_4_1.set_label("M1 R");
+    but_5_4_2.set_label("M2 R");
+    but_5_5_1.set_label("M3 R");
+    but_5_5_2.set_label("M4 R");
 
-    /*
-    p_grid_3.attach(lab_4_1_3,0,3);
-    p_grid_3.attach(g_4_1_1,1,3,4,1);
+}
 
-    //Setup up g_4_1_1 as (1x8) grid (indexing starting at 1)
-    g_4_1_1.insert_row(1);
-    for(int j=0;j<8;j++){g_4_1_1.insert_column(j+1);}
-    g_4_1_1.attach(b_5_1_1,1,1);
-    g_4_1_1.attach(b_5_1_2,2,1);
-    g_4_1_1.attach(b_5_1_3,3,1);
-    g_4_1_1.attach(b_5_1_4,4,1);
-    g_4_1_1.attach(lab_ph_1,5,1);
-    g_4_1_1.attach(lab_ph_2,6,1);
-    g_4_1_1.attach(b_5_1_5,7,1,2,1);
+///Function to setup 'Laser Control' box
+void Window::laser_control_setup()
+{
+    b_2_2_1.add(p_grid_3_2);
+    //Populate parent grid (8 rows by 5 columns)
+    for(int j=0;j<8;j++)
+    {
+        if(j<5)
+        {
+            p_grid_3_2.insert_row(j);
+            p_grid_3_2.insert_column(j);
+        }
+        else
+        {
+            p_grid_3_2.insert_row(j);
+        }
+    }
+    ///Row 0
+    //Remember, syntax for attaching widgets to grid is (column,row)
+    p_grid_3_2.attach(lab_4_2_1,3,0);
+    p_grid_3_2.attach(lab_4_2_2,4,0);
 
-    //Labels & styling
-    lab_4_1_3.set_label("Save Position");
-    b_5_1_5.set_label("Joystick Off");
-    g_4_1_1.set_column_spacing(50);
-    lab_ph_1.set_label("\t\t");
-    lab_ph_2.set_label("\t\t");
-    b_5_1_1.set_label("M1+");
-    b_5_1_2.set_label("M2+");
-    b_5_1_3.set_label("M3+");
-    b_5_1_4.set_label("M4+");
-    */
+    //Labels & Styling
+    lab_4_2_1.set_label("Energy [nJ]");
+    lab_4_2_2.set_label("Fluence [mJ/cm2]");
+
+    ///Row 1
+    p_grid_3_2.attach(but_4_2_1,0,1);
+    p_grid_3_2.attach(ent_4_2_1,3,1);
+    p_grid_3_2.attach(ent_4_2_2,4,1);
+
+    //Labels & Styling
+    but_4_2_1.set_label("Trigger Off");
+
+    ///Row 2
+    p_grid_3_2.attach(spb_4_2_1,0,2);
+    p_grid_3_2.attach(but_4_2_6,1,2);
+    p_grid_3_2.attach(lab_4_2_3,3,2);
+    p_grid_3_2.attach(spb_4_2_2,4,2);
+
+    //Labels & Styling
+    //UNC for 'mu' is :U+03BC (written as \u03BC in C++)
+    but_4_2_6.set_label("Update");
+    lab_4_2_3.set_label("Spot Size [\u03BCm]");
+
+    ///Row 3
+    p_grid_3_2.attach(but_4_2_2,0,3);
+    p_grid_3_2.attach(lab_4_2_4,3,3);
+    p_grid_3_2.attach(spb_4_2_3,4,3);
+
+    //Labels & Styling
+    but_4_2_2.set_label("Snap");
+    lab_4_2_4.set_label("Po [mW]");
+
+
 
 
 }
