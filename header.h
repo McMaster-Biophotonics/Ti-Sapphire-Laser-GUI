@@ -72,7 +72,7 @@ protected:
     Gtk::Grid p_grid_3;
 
     //Row 0
-    Gtk::Label lab_4_1_1;
+    Gtk::Label lab_4_1_1,lab_4_pad_1;
     Gtk::Entry ent_4_1_1,ent_4_1_2,ent_4_1_3;
     Gtk::Button but_4_1_1;
 

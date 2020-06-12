@@ -1,7 +1,8 @@
 #include "header.h"
 
 ///Define window constructor
-Window::Window() //initializers for buttons, etc will go here
+Window::Window()
+ //initializers for buttons, etc will go here
 {
     build_architechture();
 
@@ -210,14 +211,25 @@ void Window::laser_control_setup()
             p_grid_3_2.insert_row(j);
         }
     }
+    ///Spin button settings (to be customized as necessary)
+    int default_min = 1;
+    int default_max = 100;
+    int default_val = 1;
+    int default_increment = 1;
+    int default_pg_increment = 10;
+    ///End of spin button settings
+
     ///Row 0
     //Remember, syntax for attaching widgets to grid is (column,row)
     p_grid_3_2.attach(lab_4_2_1,3,0);
     p_grid_3_2.attach(lab_4_2_2,4,0);
+    p_grid_3_2.attach(lab_4_pad_1,2,0); //padding label
 
     //Labels & Styling
+    lab_4_pad_1.set_hexpand(true);
     lab_4_2_1.set_label("Energy [nJ]");
     lab_4_2_2.set_label("Fluence [mJ/cm2]");
+
 
     ///Row 1
     p_grid_3_2.attach(but_4_2_1,0,1);
@@ -229,14 +241,23 @@ void Window::laser_control_setup()
 
     ///Row 2
     p_grid_3_2.attach(spb_4_2_1,0,2);
-    p_grid_3_2.attach(but_4_2_6,1,2);
     p_grid_3_2.attach(lab_4_2_3,3,2);
     p_grid_3_2.attach(spb_4_2_2,4,2);
 
     //Labels & Styling
     //UNC for 'mu' is :U+03BC (written as \u03BC in C++)
-    but_4_2_6.set_label("Update");
     lab_4_2_3.set_label("Spot Size [\u03BCm]");
+    //spb_4_2_1
+    spb_4_2_1.set_range(default_min,default_max);
+    spb_4_2_1.set_value(default_val);
+    spb_4_2_1.set_increments(default_increment,default_pg_increment);
+    spb_4_2_1.set_wrap(true);
+    //spb_4_2_2
+    spb_4_2_2.set_range(default_min,default_max);
+    spb_4_2_2.set_value(default_val);
+    spb_4_2_2.set_increments(default_increment,default_pg_increment);
+    spb_4_2_2.set_wrap(true);
+
 
     ///Row 3
     p_grid_3_2.attach(but_4_2_2,0,3);
@@ -246,6 +267,59 @@ void Window::laser_control_setup()
     //Labels & Styling
     but_4_2_2.set_label("Snap");
     lab_4_2_4.set_label("Po [mW]");
+    //spb_4_2_3
+    spb_4_2_3.set_range(default_min,default_max);
+    spb_4_2_3.set_value(default_val);
+    spb_4_2_3.set_increments(default_increment,default_pg_increment);
+    spb_4_2_3.set_wrap(true);
+
+    ///Row 4
+    p_grid_3_2.attach(but_4_2_3,0,4);
+    p_grid_3_2.attach(lab_4_2_5,3,4);
+    p_grid_3_2.attach(spb_4_2_4,4,4);
+
+    //Labels & Styling
+    but_4_2_3.set_label("Laser On");
+    lab_4_2_5.set_label("Signal [V]");
+    //spb_4_2_4
+    spb_4_2_4.set_range(default_min,default_max);
+    spb_4_2_4.set_value(default_val);
+    spb_4_2_4.set_increments(default_increment,default_pg_increment);
+    spb_4_2_4.set_wrap(true);
+
+    ///Row 5
+    p_grid_3_2.attach(but_4_2_4,0,5);
+    p_grid_3_2.attach(lab_4_2_6,3,5);
+    p_grid_3_2.attach(spb_4_2_5,4,5);
+
+    //Labels & Styling
+    but_4_2_4.set_label("Laser Off");
+    lab_4_2_6.set_label("Current Signal [V]");
+    //spb_4_2_5
+    spb_4_2_5.set_range(default_min,default_max);
+    spb_4_2_5.set_value(default_val);
+    spb_4_2_5.set_increments(default_increment,default_pg_increment);
+    spb_4_2_5.set_wrap(true);
+
+    ///Row 6
+    p_grid_3_2.attach(but_4_2_5,0,6);
+    p_grid_3_2.attach(but_4_2_7,3,6,2,1);
+
+    //Labels & Styling
+    but_4_2_5.set_label("Slow Rep Rate");
+    but_4_2_7.set_label("Use OD Calibration");
+
+    ///Row 7
+    p_grid_3_2.attach(lab_4_2_7,0,7);
+    p_grid_3_2.attach(spb_4_2_6,1,7);
+
+    //Labels & Styling
+    lab_4_2_7.set_label("Pulse-pulse delay [ms]");
+    //spb_4_2_6
+    spb_4_2_6.set_range(default_min,default_max);
+    spb_4_2_6.set_value(default_val);
+    spb_4_2_6.set_increments(default_increment,default_pg_increment);
+    spb_4_2_6.set_wrap(true);
 
 
 
