@@ -68,6 +68,7 @@ void Window::build_architechture()
     stage_position_setup();
     laser_control_setup();
     x_axis_setup();
+    y_axis_setup();
 
     //Call button response fxn to setup signal connects
     button_response();
@@ -417,7 +418,7 @@ void Window::x_axis_setup()
 void Window::y_axis_setup()
 {
     //Add to parent container
-    b_3_3_1.add(p_grid_4_2);
+    b_3_2_1.add(p_grid_4_2);
 
     //Populate grid
     for(int j=0;j<5;j++)
@@ -442,7 +443,60 @@ void Window::y_axis_setup()
 
     ///Row 0
     //Remember, syntax for attaching widgets to grid is (column,row)
+    p_grid_4_2.attach(lab_5_7_1,0,0);
+    p_grid_4_2.attach(lab_5_7_2,1,0);
+    p_grid_4_2.attach(lab_5_pad_3,2,0);
+    p_grid_4_2.attach(lab_5_7_3,3,0);
+    p_grid_4_2.attach(lab_5_7_4,4,0);
 
+    //Labels & Styling
+    lab_5_7_1.set_label("Jog");
+    lab_5_7_2.set_label("Step");
+    lab_5_pad_3.set_hexpand(true);
+    lab_5_7_3.set_label("Step");
+    lab_5_7_4.set_label("Jog");
+
+    ///Row 1
+    p_grid_4_2.attach(but_5_7_1,0,1);
+    p_grid_4_2.attach(but_5_7_2,1,1);
+    p_grid_4_2.attach(but_5_7_3,2,1);
+    p_grid_4_2.attach(but_5_7_4,3,1);
+    p_grid_4_2.attach(but_5_7_5,4,1);
+
+    //Labels & Styling
+    but_5_7_1.set_label("<<<<");
+    but_5_7_2.set_label("<<");
+    but_5_7_3.set_label("Stop");
+    but_5_7_4.set_label(">>");
+    but_5_7_5.set_label(">>>>");
+
+    ///Row 2
+    p_grid_4_2.attach(lab_5_7_5,0,2,2,1);
+    p_grid_4_2.attach(spb_5_7_1,2,2);
+    p_grid_4_2.attach(lab_5_pad_4,3,2,2,1);
+
+    //Labels & Styling
+    lab_5_7_5.set_label("Step Size (\u03BCm)");
+    lab_5_pad_4.set_hexpand(true);
+    //spb_5_7_1
+    spb_5_7_1.set_range(default_min,default_max);
+    spb_5_7_1.set_value(default_val);
+    spb_5_7_1.set_increments(default_increment,default_pg_increment);
+    spb_5_7_1.set_wrap(true);
+
+    ///Row 3
+    p_grid_4_2.attach(lab_5_7_6,0,3,2,1);
+    p_grid_4_2.attach(spb_5_7_2,2,3);
+    p_grid_4_2.attach(but_5_7_6,3,3,2,1);
+
+    //Labels & Styling
+    lab_5_7_6.set_label("Velocity (\u03BCm/s)");
+    but_5_7_6.set_label("Home Y");
+    //spb_5_7_2
+    spb_5_7_2.set_range(default_min,default_max);
+    spb_5_7_2.set_value(default_val);
+    spb_5_7_2.set_increments(default_increment,default_pg_increment);
+    spb_5_7_2.set_wrap(true);
 
 }
 
