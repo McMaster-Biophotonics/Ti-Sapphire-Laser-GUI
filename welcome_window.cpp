@@ -67,6 +67,7 @@ void Window::build_architechture()
     //Call individual box setup functions
     stage_position_setup();
     laser_control_setup();
+    x_axis_setup();
 
     //Call button response fxn to setup signal connects
     button_response();
@@ -197,7 +198,9 @@ void Window::stage_position_setup()
 ///Function to setup 'Laser Control' box
 void Window::laser_control_setup()
 {
+    //Add to parent grid
     b_2_2_1.add(p_grid_3_2);
+
     //Populate parent grid (8 rows by 5 columns)
     for(int j=0;j<8;j++)
     {
@@ -320,8 +323,125 @@ void Window::laser_control_setup()
     spb_4_2_6.set_value(default_val);
     spb_4_2_6.set_increments(default_increment,default_pg_increment);
     spb_4_2_6.set_wrap(true);
+}
+
+///Function to setup 'X-Axis' box
+void Window::x_axis_setup()
+{
+    //Add to parent container
+    b_3_1_1.add(p_grid_4_1);
+
+    //Populate grid (4 rows y 5 columns)
+    for(int j=0;j<5;j++)
+    {
+        if (j<4)
+        {
+            p_grid_4_1.insert_row(j);
+            p_grid_4_1.insert_row(j);
+        }
+        else
+        {
+            p_grid_4_1.insert_column(j);
+        }
+    }
+    ///Spin button settings (to be customized as necessary)
+    int default_min = 1;
+    int default_max = 100;
+    int default_val = 1;
+    int default_increment = 1;
+    int default_pg_increment = 10;
+    ///End of spin button settings
+
+    ///Row 0
+    //Remember, syntax for attaching widgets to grid is (column,row)
+    p_grid_4_1.attach(lab_5_6_1,0,0);
+    p_grid_4_1.attach(lab_5_6_2,1,0);
+    p_grid_4_1.attach(lab_5_pad_1,2,0);
+    p_grid_4_1.attach(lab_5_6_3,3,0);
+    p_grid_4_1.attach(lab_5_6_4,4,0);
+
+    //Labels & Styling
+    lab_5_6_1.set_label("Jog");
+    lab_5_6_2.set_label("Step");
+    lab_5_pad_1.set_hexpand(true);
+    lab_5_6_3.set_label("Step");
+    lab_5_6_4.set_label("Jog");
+
+    ///Row 1
+    p_grid_4_1.attach(but_5_6_1,0,1);
+    p_grid_4_1.attach(but_5_6_2,1,1);
+    p_grid_4_1.attach(but_5_6_3,2,1);
+    p_grid_4_1.attach(but_5_6_4,3,1);
+    p_grid_4_1.attach(but_5_6_5,4,1);
+
+    //Labels & Styling
+    but_5_6_1.set_label("<<<<");
+    but_5_6_2.set_label("<<");
+    but_5_6_3.set_label("Stop");
+    but_5_6_4.set_label(">>");
+    but_5_6_5.set_label(">>>>");
+
+    ///Row 2
+    p_grid_4_1.attach(lab_5_6_5,0,2,2,1);
+    p_grid_4_1.attach(spb_5_6_1,2,2);
+    p_grid_4_1.attach(lab_5_pad_2,3,2,2,1);
+
+    //Labels & Styling
+    lab_5_6_5.set_label("Step Size (\u03BCm)");
+    lab_5_pad_2.set_hexpand(true);
+    //spb_5_6_1
+    spb_5_6_1.set_range(default_min,default_max);
+    spb_5_6_1.set_value(default_val);
+    spb_5_6_1.set_increments(default_increment,default_pg_increment);
+    spb_5_6_1.set_wrap(true);
+
+    ///Row 3
+    p_grid_4_1.attach(lab_5_6_6,0,3,2,1);
+    p_grid_4_1.attach(spb_5_6_2,2,3);
+    p_grid_4_1.attach(but_5_6_6,3,3,2,1);
+
+    //Labels & Styling
+    lab_5_6_6.set_label("Velocity (\u03BCm/s)");
+    but_5_6_6.set_label("Home X");
+    //spb_5_6_2
+    spb_5_6_2.set_range(default_min,default_max);
+    spb_5_6_2.set_value(default_val);
+    spb_5_6_2.set_increments(default_increment,default_pg_increment);
+    spb_5_6_2.set_wrap(true);
 
 
+
+}
+
+///Function to setup 'Y-Axis' box
+void Window::y_axis_setup()
+{
+    //Add to parent container
+    b_3_3_1.add(p_grid_4_2);
+
+    //Populate grid
+    for(int j=0;j<5;j++)
+    {
+        if(j<4)
+        {
+            p_grid_4_2.insert_row(j);
+            p_grid_4_2.insert_column(j);
+        }
+        else
+        {
+            p_grid_4_2.insert_column(j);
+        }
+    }
+    ///Spin button settings (to be customized as necessary)
+    int default_min = 1;
+    int default_max = 100;
+    int default_val = 1;
+    int default_increment = 1;
+    int default_pg_increment = 10;
+    ///End of spin button settings
+
+    ///Row 0
+    //Remember, syntax for attaching widgets to grid is (column,row)
 
 
 }

@@ -101,12 +101,27 @@ protected:
     Gtk::Button but_4_2_1,but_4_2_2,but_4_2_3,but_4_2_4,but_4_2_5,but_4_2_6,but_4_2_7;
     Gtk::SpinButton spb_4_2_1,spb_4_2_2,spb_4_2_3,spb_4_2_4,spb_4_2_5,spb_4_2_6;
 
+    ///x_axis_setup members
+    Gtk::Grid p_grid_4_1;
+    Gtk::Label lab_5_6_1,lab_5_6_2,lab_5_6_3,lab_5_6_4,lab_5_6_5,lab_5_6_6;
+    Gtk::Label lab_5_pad_1,lab_5_pad_2;
+    Gtk::SpinButton spb_5_6_1,spb_5_6_2;
+    Gtk::Button but_5_6_1,but_5_6_2,but_5_6_3,but_5_6_4,but_5_6_5,but_5_6_6;
+
+    ///y_axis_setup members
+    Gtk::Grid p_grid_4_2;
+    Gtk::Label lab_5_7_1,lab_5_7_2,lab_5_7_3,lab_5_7_4,lab_5_7_5,lab_5_7_6;
+    Gtk::Label lab_5_pad_3,lab_5_pad_4;
+    Gtk::SpinButton spb_5_7_1,spb_5_7_2;
+    Gtk::Button but_5_7_1,but_5_7_2,but_5_7_3,but_5_7_4,but_5_7_5,but_5_7_6;
 
 
     ///Member functions
     void build_architechture();
     void stage_position_setup();
     void laser_control_setup();
+    void x_axis_setup();
+    void y_axis_setup();
     void button_response();
     void on_qbutton_clicked();
     void on_setOrigion_button_clicked();
