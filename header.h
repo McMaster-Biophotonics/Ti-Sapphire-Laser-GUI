@@ -115,6 +115,14 @@ protected:
     Gtk::SpinButton spb_5_7_1,spb_5_7_2;
     Gtk::Button but_5_7_1,but_5_7_2,but_5_7_3,but_5_7_4,but_5_7_5,but_5_7_6;
 
+    ///z_axis_setup members
+    Gtk::Grid p_grid_4_3;
+    Gtk::Label lab_5_8_1,lab_5_8_2,lab_5_8_3,lab_5_8_4,lab_5_8_5,lab_5_8_6;
+    Gtk::Label lab_5_pad_5,lab_5_pad_6,lab_5_pad_7;
+    Gtk::Button but_5_8_1,but_5_8_2,but_5_8_3,but_5_8_4,but_5_8_5;
+    Gtk::SpinButton spb_5_8_1,spb_5_8_2;
+
+
 
     ///Member functions
     void build_architechture();
@@ -122,6 +130,7 @@ protected:
     void laser_control_setup();
     void x_axis_setup();
     void y_axis_setup();
+    void z_axis_setup();
     void button_response();
     void on_qbutton_clicked();
     void on_setOrigion_button_clicked();

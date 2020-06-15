@@ -69,6 +69,7 @@ void Window::build_architechture()
     laser_control_setup();
     x_axis_setup();
     y_axis_setup();
+    z_axis_setup();
 
     //Call button response fxn to setup signal connects
     button_response();
@@ -497,6 +498,93 @@ void Window::y_axis_setup()
     spb_5_7_2.set_value(default_val);
     spb_5_7_2.set_increments(default_increment,default_pg_increment);
     spb_5_7_2.set_wrap(true);
+
+}
+
+///Function to setup 'Z-axis' box
+void Window::z_axis_setup()
+{
+    //Add parent grid to box container
+    b_3_3_1.add(p_grid_4_3);
+
+    //Populate grid
+    for (int j=0;j<5;j++)
+    {
+        if (j<4)
+        {
+            p_grid_4_3.insert_row(j);
+            p_grid_4_3.insert_column(j);
+        }
+        else
+        {
+            p_grid_4_3.insert_column(j);
+        }
+    }
+    ///Spin button settings (to be customized as necessary)
+    int default_min = 1;
+    int default_max = 100;
+    int default_val = 1;
+    int default_increment = 1;
+    int default_pg_increment = 10;
+    ///End of spin button settings
+
+    ///Row 0
+    //Remember, syntax for attaching widgets to grid is (column,row)
+    p_grid_4_3.attach(lab_5_8_1,0,0);
+    p_grid_4_3.attach(lab_5_8_2,1,0);
+    p_grid_4_3.attach(lab_5_pad_5,2,0);
+    p_grid_4_3.attach(lab_5_8_3,3,0);
+    p_grid_4_3.attach(lab_5_8_4,4,0);
+
+    //Labels & Styling
+    lab_5_8_1.set_label("Jog");
+    lab_5_8_2.set_label("Step");
+    lab_5_pad_5.set_hexpand(true);
+    lab_5_8_3.set_label("Step");
+    lab_5_8_4.set_label("Jog");
+
+    ///Row 1
+    p_grid_4_3.attach(but_5_8_1,0,1);
+    p_grid_4_3.attach(but_5_8_2,1,1);
+    p_grid_4_3.attach(but_5_8_3,2,1);
+    p_grid_4_3.attach(but_5_8_4,3,1);
+    p_grid_4_3.attach(but_5_8_5,4,1);
+
+    //Labels & Styling
+    but_5_8_1.set_label("<<<<");
+    but_5_8_2.set_label("Out");
+    but_5_8_3.set_label("Stop");
+    but_5_8_4.set_label("In");
+    but_5_8_5.set_label(">>>>");
+
+    ///Row 2
+    p_grid_4_3.attach(lab_5_8_5,0,2,2,1);
+    p_grid_4_3.attach(spb_5_8_1,2,2);
+    p_grid_4_3.attach(lab_5_pad_6,3,2,2,1);
+
+    //Labels & Styling
+    lab_5_8_5.set_label("Step Size (\u03BCm)");
+    lab_5_pad_6.set_hexpand(true);
+    //spb_5_8_1
+    spb_5_8_1.set_range(default_min,default_max);
+    spb_5_8_1.set_value(default_val);
+    spb_5_8_1.set_increments(default_increment,default_pg_increment);
+    spb_5_8_1.set_wrap(true);
+
+    ///Row 3
+    p_grid_4_3.attach(lab_5_8_6,0,3,2,1);
+    p_grid_4_3.attach(spb_5_8_2,2,3);
+    p_grid_4_3.attach(lab_5_pad_7,3,3,2,1);
+
+    //Labels & Styling
+    lab_5_8_6.set_label("Velocity (\u03BCm/s)");
+    lab_5_pad_7.set_hexpand(true);
+    //spb_5_8_2
+    spb_5_8_2.set_range(default_min,default_max);
+    spb_5_8_2.set_value(default_val);
+    spb_5_8_2.set_increments(default_increment,default_pg_increment);
+    spb_5_8_2.set_wrap(true);
+
 
 }
 
